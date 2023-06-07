@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"> -->
+
+<!-- mapbox -->
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<title>Collaborative Project</title>
+<link rel="icon" type="image/x-icon" href="image/FlemingGIS_Black.png">
+</head>
+<body>
+
+<nav><div class="logo">
+    <h4>The Ontario Headwaters Institute</h4>
+    <!-- <img src="image\clientlogo.jpg"> -->
+    </div>
+    <ul class="nav-links">
+    <li><a href="Index.html">Home</a></li>
+    <li><a href="Methodology.html">Methodology</a></li>
+    <li><a href="#">Solution</a></li>
+    <li><a href="About.html">About</a></li>
+    </ul>
+    
+    <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    </div>
+</nav>
+    
+    <div class="button-container">
+    <!-- <button id="mapButton" onclick="toggleMap()">Open Web Map</button> -->
+    <button id="mapButton"><a href="Evacuation.js" download><i class="fa fa-download"></i>Download Data</a></button></div>
+    
+    <div class="map-container">
+
+<!-- 
+        <div class="map-image"> <img src="image\sample_map.png" alt="Default Image"></div> -->
+
+<div id="map"></div>
+
+<div id="baselayer">
+    <h4>Base Layers</h4>
+    <!-- custom basemap import -->
+    <input id="custom-basemap" type="radio" name="rtoggle" value="custom" checked="checked">
+    <label for="custom-basemap">Custom</label>
+    <input id="outdoors-v12" type="radio" name="rtoggle" value="outdoors">
+    <label for="outdoors-v12">Outdoors</label>
+    <input id="streets-v12" type="radio" name="rtoggle" value="streets">
+    <label for="streets-v12">Streets</label>
+    <input id="satellite-streets-v12" type="radio" name="rtoggle" value="satellite" >
+    <!-- See a list of Mapbox-hosted public styles at -->
+    <!-- https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
+    <label for="satellite-streets-v12">Satellite</label>
+    <input id="light-v11" type="radio" name="rtoggle" value="light">
+    <label for="light-v11">Light</label>
+    <input id="dark-v11" type="radio" name="rtoggle" value="dark">
+    <label for="dark-v11">Dark</label>
+
+    <h4>Operational Layers</h4>
+    <div id="menu"></div>
+    
+    <div class="legend">
+        <h4>Legend</h4>
+        <div class="legend-square ">
+            <div><span style="background-color: #723122"></span>Agriculture</div>
+            <div><span style="background-color: #8b4225"></span>Built Up Areas</div>
+        </div>
+
+        <div class="legend-line">
+          <div><span style="background-color: #2d4bf2"></span>Catchment (Watershed Boundary)</div>
+          <div><span style="background-color: #f2f12d"></span>1st order stream</div>
+          <div><span style="background-color: #eb2df2"></span>2nd order stream</div>
+          <div><span style="background-color: #eb2df2"></span>3rd order stream</div>
+          <div><span style="background-color: #eb2df2"></span>4th order stream</div>
+          <div><span style="background-color: #eb2df2"></span>5th order stream</div>
+        </div> 
+    </div>
+</div>
+</div>
+
+<script>
+// Custom basemap layer control
+var radioButtons = document.getElementsByName('rtoggle');
+
+// Add an event listener to each radio button
+radioButtons.forEach(function (radioButton) {
+  radioButton.addEventListener('change', function () {
+    // Get the selected value
+    var selectedValue = document.querySelector('input[name="rtoggle"]:checked').value;
+
+    // Switch the basemap based on the selected value
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwbjQzbXUifQ.-1c671RJ1iueqK7BRJVaZw';
+    switch (selectedValue) {
+
+      case 'custom':
+        map.setStyle('mapbox://styles/stolia/clibq3p2r05la01qncrqp1gbp');
+        break;
+      default:
+        // Handle any default behavior
+        break;
+    }
+  });
+});
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwbjQzbXUifQ.-1c671RJ1iueqK7BRJVaZw';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/stolia/clibq3p2r05la01qncrqp1gbp',
+        zoom: 7,
+        projection: 'mercator',
+        center: [-79.63162262645052, 43.61307791025683]
+    });
+
+    function addAdditionalSourceAndLayer() {
+        map.addSource('Catchment', {
+            type: 'geojson',
+            data: 'layers/Catchment.geojson'
+        });
+        map.addLayer({
+            id: 'Catchment',
+            type: 'fill',
+            source: 'Catchment',
+            // Make the layer visible by default.
+            paint: {
+              'fill-color': 'rgba(0, 0, 0, 0)', // Transparent fill
+              'fill-outline-color': 'blue', // Blue outline color
+            },
+            layout: {
+                'visibility': 'visible'
+            }
+        });
+
+        map.addSource('1st Order Stream', {
+            type: 'geojson',
+            data: 'layers/Order1.geojson'
+        });
+        map.addLayer({
+            id: '1st Order Stream',
+            type: 'line',
+            source: '1st Order Stream',
+            // Make the layer visible by default.
+            paint: {
+                'line-color': 'green'
+            },
+            layout: {
+                'visibility': 'none'
+            }
+        });
+
+  
+        map.addSource('2nd Order Stream', {
+            type: 'geojson',
+            data: 'layers/Order2.geojson'
+        });
+        map.addLayer({
+            id: '2nd Order Stream',
+            type: 'line',
+            source: '2nd Order Stream',
+            // Make the layer visible by default.
+            paint: {
+                'line-color': 'green'
+            },
+            layout: {
+                'visibility': 'none'
+            }
+        });
+
+        map.addSource('3rd Order Stream', {
+            type: 'geojson',
+            data: 'layers/Order3.geojson'
+        });
+        map.addLayer({
+            id: '3rd Order Stream',
+            type: 'line',
+            source: '3rd Order Stream',
+            // Make the layer visible by default.
+            paint: {
+                'line-color': 'green'
+            },
+            layout: {
+                'visibility': 'none'
+            }
+        });
+
+        map.addSource('4th Order Stream', {
+            type: 'geojson',
+            data: 'layers/Order4.geojson'
+        });
+        map.addLayer({
+            id: '4th Order Stream',
+            type: 'line',
+            source: '4th Order Stream',
+            // Make the layer visible by default.
+            paint: {
+                'line-color': 'green'
+            },
+            layout: {
+                'visibility': 'none'
+            }
+        });
+
+        
+        map.addSource('5th Order Stream', {
+            type: 'geojson',
+            data: 'layers/Order5.geojson'
+        });
+        map.addLayer({
+            id: '5th Order Stream',
+            type: 'line',
+            source: '5th Order Stream',
+            // Make the layer visible by default.
+            paint: {
+                'line-color': 'green'
+            },
+            layout: {
+                'visibility': 'none'
+            }
+        });
+
+    }
+
+    // Add source and layer whenever base style is loaded
+    map.on('style.load', () => {
+        addAdditionalSourceAndLayer();
+    });
+
+    const layerList = document.getElementById('baselayer');
+    const inputs = layerList.getElementsByTagName('input');
+
+    for (const input of inputs) {
+        input.onclick = (layer) => {
+            const layerId = layer.target.id;
+            map.setStyle('mapbox://styles/mapbox/' + layerId);
+        };
+    }
+
+    map.on('idle', () => {
+    // If these two layers were not added to the map, abort
+    if (
+      !map.getLayer('1st Order Stream') ||
+      !map.getLayer('2nd Order Stream') ||
+      !map.getLayer('3rd Order Stream') ||
+      !map.getLayer('4th Order Stream') ||
+      !map.getLayer('5th Order Stream') ||
+      !map.getLayer('Catchment')
+    ) {
+      return;
+    }
+
+    // Enumerate ids of the layers.
+    const toggleableLayerIds = [
+      '1st Order Stream',
+      '2nd Order Stream',
+      '3rd Order Stream',
+      '4th Order Stream',
+      '5th Order Stream',
+      'Catchment',
+    ];
+
+    // Set up the corresponding toggle button for each layer.
+    for (const id of toggleableLayerIds) {
+      // Skip layers that already have a button set up.
+      if (document.getElementById(id)) {
+        continue;
+      }
+
+      // Create a link.
+      const link = document.createElement('a');
+      link.id = id;
+      link.href = '#';
+      link.textContent = id;
+      link.className = 'active';
+
+      // Check the initial visibility of the layer and update the button style accordingly.
+      const visibility = map.getLayoutProperty(id, 'visibility');
+      if (visibility === 'none') {
+        link.className = '';
+      }
+
+      // Show or hide layer when the toggle is clicked.
+      link.onclick = function (e) {
+        const clickedLayer = this.textContent;
+        e.preventDefault();
+        e.stopPropagation();
+
+        const visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+        // Toggle layer visibility by changing the layout object's visibility property.
+        if (visibility === 'visible') {
+          map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+          this.className = '';
+        } else {
+          this.className = 'active';
+          map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+        }
+      };
+
+      const layers = document.getElementById('menu');
+      layers.appendChild(link);
+    }
+  });
+
+</script>
+
+
+<footer>
+    <div class="row">
+      
+      <div class="column">
+        <h4>About Our Project</h4>
+        <p>We as Fleming GIS program students created this website based on our client's request. This website is part of the outcome of the project "Evaluation Of Watershed Hydrology And Landuse In The Greater Golden Horseshoe". This website is also part of the final deliverables for our APST62 course. The solution webpage contains the web map required by the client and the methodology page describes our steps of implementation. Finally, we would like to take this opportunity to thank every faculty members who provided us with technical support and advice at Fleming College.</p>
+      </div>
+  
+      <div class="column">
+        <h4>Related Sites</h4>
+        <ul>
+          <li><a href="https://flemingcollege.ca/programs/geographic-information-systems-applications-specialist"><i class="fa solid fa-caret-right"></i>Fleming GIS Program</a></li>
+          <li><a href="https://www.geocommunity.net/"><i class="fa solid fa-caret-right"></i>GIS Applied Research Collaborative Project</a></li>
+          <li><a href="https://ontarioheadwaters.ca/"><i class="fa solid fa-caret-right"></i>OHI Home Page</a></li>
+          <li><a href="https://ontarioheadwaters.github.io/ContestedCountryside/ESUWebMapCC.html"><i class="fa solid fa-caret-right"></i>OHI Previous Project</a></li>
+        </ul>
+      </div>
+  
+      <div class="column">
+        <h4>Social Media</h4>
+        <img src="image\clientlogo.jpg" alt="company logo">
+        <ul class="social-icons">
+          <li><a href="https://www.facebook.com/pages/category/non-profit/Ontario-Headwaters-Institute-1651192185110470/"><i class="fa-brands fa-facebook-f"></i></a></li>
+          <li><a href="https://www.instagram.com/ontarioheadwatersinstitute/"><i class="fa-brands fa-instagram"></i></a></li>
+          <li><a href="https://twitter.com/onheadwaters"><i class="fa-brands fa-twitter"></i></a></li>
+          <li><a href="https://www.youtube.com/@theontarioheadwatersinstit1732"><i class="fa-brands fa-youtube"></i></a></li>
+        </ul>
+      </div>
+  
+    </div>
+  </footer>
+ <script src="scripts.js"></script> 
+</body>
+</html>
