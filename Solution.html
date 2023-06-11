@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- mapbox -->
@@ -25,7 +24,6 @@
 
 <nav><div class="logo">
     <h4>The Ontario Headwaters Institute</h4>
-    <!-- <img src="image\clientlogo.jpg"> -->
     </div>
     <ul class="nav-links">
     <li><a href="Index.html">Home</a></li>
@@ -42,13 +40,10 @@
 </nav>
     
     <div class="button-container">
-    <!-- <button id="mapButton" onclick="toggleMap()">Open Web Map</button> -->
-    <a href="layers/Catchment.geojson" download>
-      <button id="mapButton">
-        <i class="fa fa-download"></i>Download Data
-      </button>
-    </a>
-    </div>
+    <button id="mapButton">
+      <i class="fa fa-download"></i>Download Data
+    </button>
+  </div>
     
     <div class="map-container">
 
@@ -96,20 +91,15 @@
 // Custom basemap layer control
 var radioButtons = document.getElementsByName('rtoggle');
 
-// Add an event listener to each radio button
 radioButtons.forEach(function (radioButton) {
   radioButton.addEventListener('change', function () {
-    // Get the selected value
     var selectedValue = document.querySelector('input[name="rtoggle"]:checked').value;
-
-    // Switch the basemap based on the selected value
 
     switch (selectedValue) {
       case 'custom':
         map.setStyle('mapbox://styles/stolia/climier77019501pd4u245u4e');
         break;
       default:
-        // Handle any default behavior
         break;
     }
   });
@@ -169,7 +159,6 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             id: '2nd Order Stream',
             type: 'line',
             source: '2nd Order Stream',
-            // Make the layer visible by default.
             paint: {
               'line-color': '#2bbfae',
               'line-width': 1
@@ -205,7 +194,6 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             id: '4th Order Stream',
             type: 'line',
             source: '4th Order Stream',
-            // Make the layer visible by default.
             paint: {
                 'line-color': '#2e2eff',
                 'line-width': 1.5
@@ -319,6 +307,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
 
 </script>
 
+
 <footer>
     <div class="row">
       
@@ -339,7 +328,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
   
       <div class="column">
         <h4>Social Media</h4>
-        <img src="image/clientlogo.jpg" alt="company logo">
+        <img src="image\clientlogo.jpg" alt="company logo">
         <ul class="social-icons">
           <li><a href="https://www.facebook.com/pages/category/non-profit/Ontario-Headwaters-Institute-1651192185110470/"><i class="fa-brands fa-facebook-f"></i></a></li>
           <li><a href="https://www.instagram.com/ontarioheadwatersinstitute/"><i class="fa-brands fa-instagram"></i></a></li>
