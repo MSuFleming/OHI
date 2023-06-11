@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"> -->
@@ -105,11 +106,10 @@ radioButtons.forEach(function (radioButton) {
     var selectedValue = document.querySelector('input[name="rtoggle"]:checked').value;
 
     // Switch the basemap based on the selected value
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwbjQzbXUifQ.-1c671RJ1iueqK7BRJVaZw';
-    switch (selectedValue) {
 
+    switch (selectedValue) {
       case 'custom':
-        map.setStyle('mapbox://styles/stolia/clibq3p2r05la01qncrqp1gbp');
+        map.setStyle('mapbox://styles/stolia/climier77019501pd4u245u4e');
         break;
       default:
         // Handle any default behavior
@@ -121,7 +121,7 @@ radioButtons.forEach(function (radioButton) {
 mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwbjQzbXUifQ.-1c671RJ1iueqK7BRJVaZw';
     const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/stolia/clibq3p2r05la01qncrqp1gbp',
+        style: 'mapbox://styles/stolia/climier77019501pd4u245u4e',
         zoom: 7,
         projection: 'mercator',
         center: [-79.63162262645052, 43.61307791025683]
@@ -136,10 +136,9 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             id: 'Catchment',
             type: 'fill',
             source: 'Catchment',
-            // Make the layer visible by default.
             paint: {
-              'fill-color': 'rgba(0, 0, 0, 0)', // Transparent fill
-              'fill-outline-color': 'blue', // Blue outline color
+              'fill-color': 'rgba(0, 0, 0, 0)', 
+              'fill-outline-color': 'blue',
             },
             layout: {
                 'visibility': 'visible'
