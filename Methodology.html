@@ -40,7 +40,7 @@
 
 <div class="method_text">
   <h1>Data Collection & Pre-Processing</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula neque vel ligula efficitur, nec tristique elit pulvinar. Fusce nec efficitur lectus. Mauris blandit dapibus turpis, vel aliquam nunc mollis sed. Nam at malesuada neque, in lacinia nisl. Integer id nisi eu diam pharetra pellentesque. Nulla fermentum ligula a nunc gravida, at malesuada massa tincidunt.</p>
+  <p>Most of our data are downloaded from Ontario GeoHub and ESRI Living Atlas. The first we do is to clip them based on our defined study area. Then we transform them into the same projection. All layers and outputs are stored in the Geodatabase.</p>
 </div>
 <div class="method_image">
   <img src="image\Processing.png" alt="Data Pre-Processing">
@@ -48,10 +48,33 @@
 
 <div class="method_text">
   <h1>Spatial Analysis</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula neque vel ligula efficitur, nec tristique elit pulvinar. Fusce nec efficitur lectus. Mauris blandit dapibus turpis, vel aliquam nunc mollis sed. Nam at malesuada neque, in lacinia nisl. Integer id nisi eu diam pharetra pellentesque. Nulla fermentum ligula a nunc gravida, at malesuada massa tincidunt.</p>
+  <p>Below are the tools we use to analyze and determine the watershed boundary and the stream order in ArcGIS Pro.</p>
+  <p><p1 style="font-weight: bold;">Fill sinks tool</p1> removes depressions or sinks in a digital elevation model (DEM) by filling them with neighboring elevation values. This process is important in watershed analysis because depressions can cause inaccuracies in the calculation of flow direction and accumulation, which can affect the delineation of watersheds and the identification of drainage patterns.</p>
+
+  <p><p1 style="font-weight: bold;">Flow Direction tool</p1> identifies the direction that water flows across a digital elevation model (DEM) surface. This information is used to create a flow accumulation raster, which shows the number of cells that contribute flow to each cell in the DEM. The flow accumulation raster is then used to create a stream network, which is the basis for delineating watersheds.</p>
+
+  <p><p1 style="font-weight: bold;">Flow accumulation tool</p1> calculates the accumulated flow of water through each cell in a digital elevation model (DEM). This information is used to identify the flow paths and streams in a landscape, which are then used to delineate watersheds.</p> 
+
+  <p><p1 style="font-weight: bold;">Stream Definition tool</p1> is used to identify the location of streams within a watershed. It does this by analyzing the flow direction and accumulation of water in the area, and identifying areas where the water flow is concentrated enough to form a stream.</p>
+
+  <p><p1 style="font-weight: bold;">Stream Segmentation tool</p1> is used to divide a stream network into segments based on certain criteria such as stream order, flow accumulation, or slope. This tool is useful for analyzing and managing streams and watersheds.</p>
+    
+  <p><p1 style="font-weight: bold;">Stream Order tool</p1> is used to assign a hierarchical order to streams or rivers within a watershed based on their relative position in the network. This tool is commonly used in watershed analysis to understand the flow and connectivity of water bodies within a given area. The stream order is determined based on the number of tributaries that contribute to a given stream segment, with higher order streams having more tributaries and a larger drainage area.</p>
+    
+  <p><p1 style="font-weight: bold;">Stream to Feature tool</p1> converts a raster stream network into a vector feature class. This tool is often used in hydrological analysis to identify and map the flow of water in a given area.</p>
+    
+  <p><p1 style="font-weight: bold;"> Catchment Grid Delineation tool</p1> is used to generate a grid-based representation of the catchment areas or drainage basins within a given study area. The tool uses a digital elevation model (DEM) as input to determine the flow direction and accumulation patterns of water across the landscape.</p>
+    
+  <p><p1 style="font-weight: bold;">Catchment Polygon Processing</p1> converts a catchment GRID it into a catchment polygon Feature.</p>
+    
+  <p><p1 style="font-weight: bold;">Drainage Line Processing</p1> converts the input Stream Link grid into a Drainage Line feature class. Each line in the feature class carries the identifier of the catchment in which it resides.</p>
+
+  <p><p1 style="font-weight: bold;">Adjoint Catchment Processing tool</p1> is used to calculate the upstream contributing area for each cell in a digital elevation model (DEM). This tool is used to identify the areas that contribute water to a particular point in the watershed.</p>
+    
+  <p><p1 style="font-weight: bold;">Drainage Point Processing</p1> in ArcHydro is a feature extraction tool used in ArcGIS Pro for creating hydrologic features such as stream networks, catchments, and drainage points. The tool extracts the lowest point in each catchment and generates unique ID numbers for each drainage point. The drainage point processing tool is useful in identifying the location of natural drainage pathways and understanding the flow of water in a region. The drainage points that are extracted by this tool can be used as a starting point for further analysis and modeling of the hydrological system in the area. The tool helps in identifying the flow direction, flow accumulation, and stream order of a catchment. In summary, the Drainage Point Processing tool in ArcHydro is an essential tool for anyone working with hydrological data and conducting analyses related to water flow and movement.</p>
 </div>
 <div class="method_image">
-  <img src="image\Analysis.png" alt="Analysis Image">
+  <img src="image\Analysis.png" alt="Analysis Image">  <img src="image\watershed.png" alt="Analysis Image2">
 </div>
 
 <div class="method_text">
