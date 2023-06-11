@@ -686,13 +686,13 @@ background: #5DAC81;
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: flex;
+        justify-content:flex-end;
         align-items: center;
         overflow: hidden;
         border-radius: 0%;
     }
     #menu {
-        position:flex;
+        position:relative;
         bottom: 0;
         left: 0;
         width: 50%;
@@ -711,7 +711,6 @@ background: #5DAC81;
 
     .button-container button{
         background-color: #e6eeff;
-        color: white;
         border-radius: 8px;
         border-color: transparent;
         cursor: pointer;
