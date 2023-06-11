@@ -79,7 +79,8 @@
 
 <div class="method_text">
   <h1>Mapbox</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula neque vel ligula efficitur, nec tristique elit pulvinar. Fusce nec efficitur lectus. Mauris blandit dapibus turpis, vel aliquam nunc mollis sed. Nam at malesuada neque, in lacinia nisl. Integer id nisi eu diam pharetra pellentesque. Nulla fermentum ligula a nunc gravida, at malesuada massa tincidunt.</p>
+  <p>mapbox allows us to create, edit and customize basemap styles, colours, fonts, etc., which is why we choose to use it to present the results of our analysis.</p>
+  <p>Similar to using the Esri Leaflet, we first import the styles we want to display by adding token and URL links. Next we decide on the center point of the map and the zoom level.</p>
 </div>
 <div class="method_image">
   <img src="image\style.png" alt="mapbox Image">
@@ -87,7 +88,7 @@
 
 <div class="method_text">
   <h1>Add layers</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula neque vel ligula efficitur, nec tristique elit pulvinar. Fusce nec efficitur lectus. Mauris blandit dapibus turpis, vel aliquam nunc mollis sed. Nam at malesuada neque, in lacinia nisl. Integer id nisi eu diam pharetra pellentesque. Nulla fermentum ligula a nunc gravida, at malesuada massa tincidunt.</p>
+  <p>Before importing layers to the web map, we need to make sure that the layers are in a compatible format. In this project, we decide to convert all vector layers into geojson format. After importing a layer, a unique ID has to be assigned. In the screenshot below, for example, I imported a catchment layer and assigned an ID to it (I simply call it "Catchment"). For visualization purposes, layers' type (such as fill and line) has to be decided. Then, we can customize our layers by changing fill colour, line colour, thickness and transparency, etc.</p>
 </div>
 <div class="method_image">
   <img src="image\addlayers.png" alt="layers Image">
@@ -95,7 +96,7 @@
 
 <div class="method_text">
   <h1>Add Legends</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula neque vel ligula efficitur, nec tristique elit pulvinar. Fusce nec efficitur lectus. Mauris blandit dapibus turpis, vel aliquam nunc mollis sed. Nam at malesuada neque, in lacinia nisl. Integer id nisi eu diam pharetra pellentesque. Nulla fermentum ligula a nunc gravida, at malesuada massa tincidunt.</p>
+  <p>Legends are not automatically generated in Mapbox. A div class is created to contain our legend, and the style and position of the legend container can be customized by editing the CSS properties. For more information on how to add legends visit <a href="https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/"><p1 style="font-weight: bold; color: black;">mapbox tutorial</p1></a>.</p>
 </div>
 <div class="method_image">
   <img src="image\Legend.png" alt="legends">
