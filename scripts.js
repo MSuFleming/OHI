@@ -56,7 +56,6 @@ $(document).ready(function(){
   });
 });
 
-
 function toggleMap() {
   var mapDiv = document.getElementById("map");
   var mapButton = document.getElementById("mapButton");
@@ -69,3 +68,10 @@ function toggleMap() {
     mapButton.innerHTML = "Open Web Map";
   }
 }
+
+document.getElementById("mapButton").addEventListener("click", function() {
+  var link = document.createElement('a');
+  link.href = 'layers/Catchment.geojson';
+  link.download = 'Catchment.geojson';
+  link.click();
+});
