@@ -8,10 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
 
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"> -->
 
 <!-- mapbox -->
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
@@ -46,12 +43,14 @@
     
     <div class="button-container">
     <!-- <button id="mapButton" onclick="toggleMap()">Open Web Map</button> -->
-    <button id="mapButton"><a href="layers\Catchment.geojson" download><i class="fa fa-download"></i>Download Data</a></button></div>
+    <a href="layers/Catchment.geojson" download>
+      <button id="mapButton">
+        <i class="fa fa-download"></i>Download Data
+      </button>
+    </a>
+    </div>
     
     <div class="map-container">
-
-<!-- 
-        <div class="map-image"> <img src="image\sample_map.png" alt="Default Image"></div> -->
 
 <div id="map"></div>
 
@@ -68,29 +67,26 @@
     <!-- See a list of Mapbox-hosted public styles at -->
     <!-- https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
     <label for="satellite-streets-v12">Satellite</label>
-    <input id="light-v11" type="radio" name="rtoggle" value="light">
-    <label for="light-v11">Light</label>
-    <input id="dark-v11" type="radio" name="rtoggle" value="dark">
-    <label for="dark-v11">Dark</label>
 
     <h4>Operational Layers</h4>
     <div id="menu"></div>
     
     <div class="legend">
-        <h4>Legend</h4>
+        <h4>Custom Map Legend</h4>
         <div class="legend-square ">
-            <div><span style="background-color: #723122"></span>Agriculture</div>
-            <div><span style="background-color: #8b4225"></span>Built Up Areas</div>
-            <div><span style="background-color: #8b4225"></span>Waterbodies</div>
+            <div><span style="background-color: #eee3b9"></span>Agriculture</div>
+            <div><span style="background-color: #f1c9bf"></span>Built Up Areas</div>
+            <div><span style="background-color: #b1c69e"></span>Oak Ridge Morain</div>
+            <div><span style="background-color: #b1cec7"></span>Niagra Escarpment</div>
         </div>
 
         <div class="legend-line">
-          <div><span style="background-color: #2d4bf2"></span>Catchment (Watershed Boundary)</div>
-          <div><span style="background-color: #f2f12d"></span>1st order stream</div>
-          <div><span style="background-color: #eb2df2"></span>2nd order stream</div>
-          <div><span style="background-color: #eb2df2"></span>3rd order stream</div>
-          <div><span style="background-color: #eb2df2"></span>4th order stream</div>
-          <div><span style="background-color: #eb2df2"></span>5th order stream</div>
+          <div><span style="background-color: #c4a836"></span>Catchment (Watershed Boundary)</div>
+          <div><span style="background-color: #01f7f7"></span>1st order stream</div>
+          <div><span style="background-color: #2bbfae"></span>2nd order stream</div>
+          <div><span style="background-color: #8626ed"></span>3rd order stream</div>
+          <div><span style="background-color: #2e2eff"></span>4th order stream</div>
+          <div><span style="background-color: #035886"></span>5th order stream</div>
         </div> 
     </div>
 </div>
@@ -138,8 +134,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             type: 'fill',
             source: 'Catchment',
             paint: {
-              'fill-color': 'rgba(0, 0, 0, 0)', 
-              'fill-outline-color': 'blue',
+              'fill-color': 'rgba(236, 225, 182, 0.1)', 
+              'fill-outline-color': '#c4a836',
             },
             layout: {
                 'visibility': 'visible'
@@ -156,7 +152,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             source: '1st Order Stream',
             // Make the layer visible by default.
             paint: {
-                'line-color': 'green'
+                'line-color': '#01f7f7',
+                'line-width': 0.8
             },
             layout: {
                 'visibility': 'none'
@@ -174,7 +171,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             source: '2nd Order Stream',
             // Make the layer visible by default.
             paint: {
-                'line-color': 'green'
+              'line-color': '#2bbfae',
+              'line-width': 1
             },
             layout: {
                 'visibility': 'none'
@@ -191,7 +189,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             source: '3rd Order Stream',
             // Make the layer visible by default.
             paint: {
-                'line-color': 'green'
+              'line-color': '#8626ed',
+              'line-width': 1.2
             },
             layout: {
                 'visibility': 'none'
@@ -208,7 +207,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             source: '4th Order Stream',
             // Make the layer visible by default.
             paint: {
-                'line-color': 'green'
+                'line-color': '#2e2eff',
+                'line-width': 1.5
             },
             layout: {
                 'visibility': 'none'
@@ -226,7 +226,8 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
             source: '5th Order Stream',
             // Make the layer visible by default.
             paint: {
-                'line-color': 'green'
+                'line-color': '#035886',
+                'line-width': 1.8
             },
             layout: {
                 'visibility': 'none'
@@ -318,7 +319,6 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
 
 </script>
 
-
 <footer>
     <div class="row">
       
@@ -339,7 +339,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
   
       <div class="column">
         <h4>Social Media</h4>
-        <img src="image\clientlogo.jpg" alt="company logo">
+        <img src="image/clientlogo.jpg" alt="company logo">
         <ul class="social-icons">
           <li><a href="https://www.facebook.com/pages/category/non-profit/Ontario-Headwaters-Institute-1651192185110470/"><i class="fa-brands fa-facebook-f"></i></a></li>
           <li><a href="https://www.instagram.com/ontarioheadwatersinstitute/"><i class="fa-brands fa-instagram"></i></a></li>
