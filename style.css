@@ -760,16 +760,23 @@ background: #5DAC81;
     justify-content: center;
     align-items: center;
     padding-bottom: 10px;
-  }
+}
   
-  .method_image img {
+.method_image img {
     max-width: 100%;
     max-height: 100%;
-  }
+}
   
-  .method_text {
+.method_text {
     margin: 0; /* Remove default margin */
     padding-left: 15%;
     padding-right: 15%;
     padding-top: 8%;
-  }
+}
+
+.method_text1{
+    margin: 0; /* Remove default margin */
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 2%;
+}
