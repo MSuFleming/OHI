@@ -36,36 +36,36 @@
   <p>Most of our data are downloaded from Ontario GeoHub and ESRI Living Atlas. The first we do is to clip them based on our defined study area. Then we transform them into the same projection. All layers and outputs are stored in the Geodatabase.</p>
 </div>
 <div class="method_image">
-  <img src="image\Processing.png" alt="Data Pre-Processing">
+  <img src="image/Processing.png" alt="Data Pre-Processing">
 </div>
 
 <div class="method_text">
   <h1>Spatial Analysis</h1>
   <p>Below are the tools we use to analyze and determine the watershed boundary and the stream order in ArcGIS Pro.</p>
-  <p><p1 style="font-weight: bold;">Fill sinks tool</p1> removes depressions or sinks in a digital elevation model (DEM) by filling them with neighboring elevation values. This process is important in watershed analysis because depressions can cause inaccuracies in the calculation of flow direction and accumulation, which can affect the delineation of watersheds and the identification of drainage patterns.</p>
+  <p><strong>Fill sinks tool</strong> removes depressions or sinks in a digital elevation model (DEM) by filling them with neighboring elevation values. This process is important in watershed analysis because depressions can cause inaccuracies in the calculation of flow direction and accumulation, which can affect the delineation of watersheds and the identification of drainage patterns.</p>
 
-  <p><p1 style="font-weight: bold;">Flow Direction tool</p1> identifies the direction that water flows across a digital elevation model (DEM) surface. This information is used to create a flow accumulation raster, which shows the number of cells that contribute flow to each cell in the DEM. The flow accumulation raster is then used to create a stream network, which is the basis for delineating watersheds.</p>
+  <p><strong>Flow Direction tool</strong> identifies the direction that water flows across a digital elevation model (DEM) surface. This information is used to create a flow accumulation raster, which shows the number of cells that contribute flow to each cell in the DEM. The flow accumulation raster is then used to create a stream network, which is the basis for delineating watersheds.</p>
 
-  <p><p1 style="font-weight: bold;">Flow accumulation tool</p1> calculates the accumulated flow of water through each cell in a digital elevation model (DEM). This information is used to identify the flow paths and streams in a landscape, which are then used to delineate watersheds.</p> 
+  <p><strong>Flow accumulation tool</strong> calculates the accumulated flow of water through each cell in a digital elevation model (DEM). This information is used to identify the flow paths and streams in a landscape, which are then used to delineate watersheds.</p> 
 
-  <p><p1 style="font-weight: bold;">Stream Definition tool</p1> is used to identify the location of streams within a watershed. It does this by analyzing the flow direction and accumulation of water in the area, and identifying areas where the water flow is concentrated enough to form a stream.</p>
+  <p><strong>Stream Definition tool</strong> is used to identify the location of streams within a watershed. It does this by analyzing the flow direction and accumulation of water in the area, and identifying areas where the water flow is concentrated enough to form a stream.</p>
 
-  <p><p1 style="font-weight: bold;">Stream Segmentation tool</p1> is used to divide a stream network into segments based on certain criteria such as stream order, flow accumulation, or slope. This tool is useful for analyzing and managing streams and watersheds.</p>
+  <p><strong>Stream Segmentation tool</strong> is used to divide a stream network into segments based on certain criteria such as stream order, flow accumulation, or slope. This tool is useful for analyzing and managing streams and watersheds.</p>
     
-  <p><p1 style="font-weight: bold;">Stream Order tool</p1> is used to assign a hierarchical order to streams or rivers within a watershed based on their relative position in the network. This tool is commonly used in watershed analysis to understand the flow and connectivity of water bodies within a given area. The stream order is determined based on the number of tributaries that contribute to a given stream segment, with higher order streams having more tributaries and a larger drainage area.</p>
+  <p><strong>Stream Order tool</strong> is used to assign a hierarchical order to streams or rivers within a watershed based on their relative position in the network. This tool is commonly used in watershed analysis to understand the flow and connectivity of water bodies within a given area. The stream order is determined based on the number of tributaries that contribute to a given stream segment, with higher order streams having more tributaries and a larger drainage area.</p>
     
-  <p><p1 style="font-weight: bold;">Stream to Feature tool</p1> converts a raster stream network into a vector feature class. This tool is often used in hydrological analysis to identify and map the flow of water in a given area.</p>
+  <p><strong>Stream to Feature tool</strong> converts a raster stream network into a vector feature class. This tool is often used in hydrological analysis to identify and map the flow of water in a given area.</p>
     
-  <p><p1 style="font-weight: bold;">Catchment Grid Delineation tool</p1> is used to generate a grid-based representation of the catchment areas or drainage basins within a given study area. The tool uses a digital elevation model (DEM) as input to determine the flow direction and accumulation patterns of water across the landscape.</p>
+  <p><strong>Catchment Grid Delineation tool</strong> is used to generate a grid-based representation of the catchment areas or drainage basins within a given study area. The tool uses a digital elevation model (DEM) as input to determine the flow direction and accumulation patterns of water across the landscape.</p>
     
-  <p><p1 style="font-weight: bold;">Catchment Polygon Processing</p1> converts a catchment GRID it into a catchment polygon Feature.</p>
+  <p><strong>Catchment Polygon Processing</strong> converts a catchment GRID it into a catchment polygon Feature.</p>
    
-  <p><p1 style="font-weight: bold;">Adjoint Catchment Processing tool</p1> is used to calculate the upstream contributing area for each cell in a digital elevation model (DEM). This tool is used to identify the areas that contribute water to a particular point in the watershed.</p>
+  <p><strong>Adjoint Catchment Processing tool</strong> is used to calculate the upstream contributing area for each cell in a digital elevation model (DEM). This tool is used to identify the areas that contribute water to a particular point in the watershed.</p>
     
-  <p><p1 style="font-weight: bold;">Drainage Point Processing</p1> in ArcHydro is a feature extraction tool used in ArcGIS Pro for creating hydrologic features such as stream networks, catchments, and drainage points. The tool extracts the lowest point in each catchment and generates unique ID numbers for each drainage point. The drainage point processing tool is useful in identifying the location of natural drainage pathways and understanding the flow of water in a region. The drainage points that are extracted by this tool can be used as a starting point for further analysis and modeling of the hydrological system in the area. The tool helps in identifying the flow direction, flow accumulation, and stream order of a catchment. In summary, the Drainage Point Processing tool in ArcHydro is an essential tool for anyone working with hydrological data and conducting analyses related to water flow and movement.</p>
+  <p><strong>Drainage Point Processing</strong> in ArcHydro is a feature extraction tool used in ArcGIS Pro for creating hydrologic features such as stream networks, catchments, and drainage points. The tool extracts the lowest point in each catchment and generates unique ID numbers for each drainage point. The drainage point processing tool is useful in identifying the location of natural drainage pathways and understanding the flow of water in a region. The drainage points that are extracted by this tool can be used as a starting point for further analysis and modeling of the hydrological system in the area. The tool helps in identifying the flow direction, flow accumulation, and stream order of a catchment. In summary, the Drainage Point Processing tool in ArcHydro is an essential tool for anyone working with hydrological data and conducting analyses related to water flow and movement.</p>
 </div>
 <div class="method_image">
-  <img src="image\Analysis.png" alt="Analysis Image">
+  <img src="image/Analysis.png" alt="Analysis Image">
 </div>
 
 <div class="method_text">
@@ -74,7 +74,7 @@
   <p>Similar to using the Esri Leaflet, we first import the styles we want to display by adding token and URL links. Next we decide on the center point of the map and the zoom level.</p>
 </div>
 <div class="method_image">
-  <img src="image\style.png" alt="mapbox Image">
+  <img src="image/style.png" alt="mapbox Image">
 </div>
 
 <div class="method_text">
@@ -82,15 +82,15 @@
   <p>Before importing layers to the web map, we need to make sure that the layers are in a compatible format. In this project, we decide to convert all vector layers into geojson format. After importing a layer, a unique ID has to be assigned. In the screenshot below, for example, I imported a catchment layer and assigned an ID to it (I simply call it "Catchment"). For visualization purposes, layers' type (such as fill and line) has to be decided. Then, we can customize our layers by changing fill colour, line colour, thickness and transparency, etc.</p>
 </div>
 <div class="method_image">
-  <img src="image\addlayers.png" alt="layers Image">
+  <img src="image/addlayers.png" alt="layers Image">
 </div>
 
 <div class="method_text">
   <h1>Add Legends</h1>
-  <p>Legends are not automatically generated in Mapbox. A div class is created to contain our legend, and the style and position of the legend container can be customized by editing the CSS properties. For more information on how to add legends visit <a href="https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/"><p1 style="font-weight: bold; color: black;">mapbox tutorial</p1></a>.</p>
+  <p>Legends are not automatically generated in Mapbox. A div class is created to contain our legend, and the style and position of the legend container can be customized by editing the CSS properties. For more information on how to add legends visit <a href="https://docs.mapbox.com/mapbox-gl-js/example/updating-choropleth/"><strong>mapbox tutorial</strong></a>.</p>
 </div>
 <div class="method_image">
-  <img src="image\Legend.png" alt="legends">
+  <img src="image/Legend.png" alt="legends">
 </div>
 
 <div class="method_text">
@@ -98,7 +98,7 @@
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula neque vel ligula efficitur, nec tristique elit pulvinar. Fusce nec efficitur lectus. Mauris blandit dapibus turpis, vel aliquam nunc mollis sed. Nam at malesuada neque, in lacinia nisl. Integer id nisi eu diam pharetra pellentesque. Nulla fermentum ligula a nunc gravida, at malesuada massa tincidunt.</p>
 </div>
 <div class="method_image">
-  <img src="image\clientlogo.jpg" alt="Your Image">
+  <img src="image/clientlogo.jpg" alt="Your Image">
 </div>
 
 <footer>
@@ -106,7 +106,7 @@
     
     <div class="column">
       <h4>About Our Project</h4>
-      <p>We as Fleming GIS program students created this website based on our client's request. This website is part of the outcome of the project "Evaluation Of Watershed Hydrology And Landuse In The Greater Golden Horseshoe". This website is also part of the final deliverables for our APST62 course. The solution webpage contains the web map required by the client and the methodology page describes our steps of implementation. Finally, we would like to take this opportunity to thank every faculty members who provided us with technical support and advice at Fleming College.</p>
+      <p>Students at Fleming College developed this website, "Evaluation Of Watershed Hydrology And Land Use In The Greater Golden Horseshoe", as part of the final deliverables for our APST62 course. Our client, the Ontario Headwaters Institute, works to protect Ontario's watersheds, their natural heritage, and receiving waters such as the Great Lakes. The solution page contains the web map required by the client and the methodology page describes our steps of implementation.  We thank every faculty members who provided us with technical support and advice at Fleming College.</p>
     </div>
 
     <div class="column">
@@ -121,7 +121,7 @@
 
     <div class="column">
       <h4>Social Media</h4>
-      <img src="image\clientlogo.jpg" alt="company logo">
+      <img src="image/clientlogo.jpg" alt="company logo">
       <ul class="social-icons">
         <li><a href="https://www.facebook.com/pages/category/non-profit/Ontario-Headwaters-Institute-1651192185110470/"><i class="fa-brands fa-facebook-f"></i></a></li>
         <li><a href="https://www.instagram.com/ontarioheadwatersinstitute/"><i class="fa-brands fa-instagram"></i></a></li>
