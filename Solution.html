@@ -56,10 +56,6 @@
     <label for="custom-basemap">Custom</label>
     <input id="Imagery" type="radio" name="rtoggle" value="Imagery" >
     <label for="Imagery">Satellite</label>
-    <input id="outdoors-v12" type="radio" name="rtoggle" value="outdoors">
-    <label for="outdoors-v12">Outdoors</label>
-    <input id="streets-v12" type="radio" name="rtoggle" value="streets">
-    <label for="streets-v12">Streets</label>
     <!-- See a list of Mapbox-hosted public styles at -->
     <!-- https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
 
@@ -83,7 +79,7 @@
           <div><span style="background-color: #2bbfae"></span>2nd order stream</div>
           <div><span style="background-color: #8626ed"></span>3rd order stream</div>
           <div><span style="background-color: #2e2eff"></span>4th order stream</div>
-          <div><span style="background-color: #035886"></span>5th order stream</div>
+          <div><span style="background-color: #035886"></span>5th order & above</div>
         </div> 
     </div>
 </div>
@@ -217,14 +213,14 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
         });
 
         
-        map.addSource('5th Order Stream', {
+        map.addSource('5th Order & Above', {
             type: 'geojson',
             data: 'layers/Order5.geojson'
         });
         map.addLayer({
-            id: '5th Order Stream',
+            id: '5th Order & Above',
             type: 'line',
-            source: '5th Order Stream',
+            source: '5th Order & Above',
             // Make the layer visible by default.
             paint: {
                 'line-color': '#035886',
@@ -259,7 +255,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
       !map.getLayer('2nd Order Stream') ||
       !map.getLayer('3rd Order Stream') ||
       !map.getLayer('4th Order Stream') ||
-      !map.getLayer('5th Order Stream') ||
+      !map.getLayer('5th Order & Above') ||
       !map.getLayer('Catchment')
     ) {
       return;
@@ -271,7 +267,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
       '2nd Order Stream',
       '3rd Order Stream',
       '4th Order Stream',
-      '5th Order Stream',
+      '5th Order & Above',
       'Catchment',
     ];
 
@@ -324,7 +320,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
       
       <div class="column">
         <h4>About Our Project</h4>
-        <p>We as Fleming GIS program students created this website based on our client's request. This website is part of the outcome of the project "Evaluation Of Watershed Hydrology And Landuse In The Greater Golden Horseshoe". This website is also part of the final deliverables for our APST62 course. The solution webpage contains the web map required by the client and the methodology page describes our steps of implementation. Finally, we would like to take this opportunity to thank every faculty members who provided us with technical support and advice at Fleming College.</p>
+        <p>Students at Fleming College developed this website, "Evaluation Of Watershed Hydrology And Land Use In The Greater Golden Horseshoe", as part of the final deliverables for our APST62 course. Our client, the Ontario Headwaters Institute, works to protect Ontario's watersheds, their natural heritage, and receiving waters such as the Great Lakes. The solution page contains the web map required by the client and the methodology page describes our steps of implementation.  We thank every faculty members who provided us with technical support and advice at Fleming College.</p>
       </div>
   
       <div class="column">
