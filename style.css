@@ -652,12 +652,12 @@ background: #5DAC81;
 }
 
 .legend {
-    padding-top: 20px;
-    font-size: 20px;
+    padding-top: 18px;
+    font-size: 18px;
 }
     
 .legend h4 {
-    margin: 0 0 10px;
+    margin: 0 0 2px;
 }
 
 /* https://www.w3schools.com/tags/tag_span.asp */
@@ -668,7 +668,6 @@ background: #5DAC81;
     margin-right: 7px;
     width: 10px;
 }
-
 
 .legend-line span{
     display: inline-block;
@@ -738,7 +737,6 @@ background: #5DAC81;
         background-color: transparent;
         }
             
-
     .video-bg button {
         display: block;
         font-size: 1.5em;
