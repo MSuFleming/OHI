@@ -651,8 +651,8 @@ background: #5DAC81;
 }
 
 .legend {
-    padding-top: 20px;
-    font-size: 20px;
+    padding-top: 15px;
+    font-size: 18px;
 }
     
 .legend h4 {
@@ -675,7 +675,7 @@ background: #5DAC81;
     margin-right: 7px;
 }
 
-@media screen and (max-width: 996px) {
+@media screen and (max-width: 996px), (max-height: 880px) {
     #baselayer {
         font-size: 13px;
         position: absolute;
