@@ -54,14 +54,16 @@
     <!-- custom basemap import -->
     <input id="custom-basemap" type="radio" name="rtoggle" value="custom" checked="checked">
     <label for="custom-basemap">Custom</label>
+    <input id="Imagery" type="radio" name="rtoggle" value="Imagery" >
+    <label for="Imagery">Satellite</label>
     <input id="outdoors-v12" type="radio" name="rtoggle" value="outdoors">
     <label for="outdoors-v12">Outdoors</label>
     <input id="streets-v12" type="radio" name="rtoggle" value="streets">
     <label for="streets-v12">Streets</label>
-    <input id="satellite-streets-v12" type="radio" name="rtoggle" value="satellite" >
     <!-- See a list of Mapbox-hosted public styles at -->
     <!-- https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
-    <label for="satellite-streets-v12">Satellite</label>
+
+    
 
     <h4>Operational Layers</h4>
     <div id="menu"></div>
@@ -88,6 +90,8 @@
 </div>
 
 <script>
+
+
 // Custom basemap layer control
 var radioButtons = document.getElementsByName('rtoggle');
 
@@ -98,6 +102,15 @@ radioButtons.forEach(function (radioButton) {
     switch (selectedValue) {
       case 'custom':
         map.setStyle('mapbox://styles/stolia/climier77019501pd4u245u4e');
+        break;
+      default:
+        break;
+    }
+
+    
+    switch (selectedValue) {
+      case 'Imagery':
+        map.setStyle('mapbox://styles/stolia/cliu9am49020701qgb2mre4z3');
         break;
       default:
         break;
@@ -304,9 +317,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvbGlhIiwiYSI6ImNsZzN5b3JmczBmbnozZXNhMTEwb
       layers.appendChild(link);
     }
   });
-
 </script>
-
 
 <footer>
     <div class="row">
