@@ -13,11 +13,8 @@ const navSlide = () => {
   });
 
   burger.addEventListener('click', () => {
-    // Toggle Nav
     nav.classList.toggle('nav-active');
-    // animate navlinks
     navLinks.forEach(setStyleLink);
-    // burger animation
     burger.classList.toggle('toggle');
   });
 }
@@ -56,12 +53,13 @@ $(document).ready(function(){
   });
 });
 
+
 function toggleMap() {
   var mapDiv = document.getElementById("map");
   var mapButton = document.getElementById("mapButton");
   if (mapDiv.style.display === "none") {
     mapDiv.style.display = "block";
-    map.invalidateSize(); // This line will re-render the map to fit the container
+    map.invalidateSize(); 
     mapButton.innerHTML = "Close Web Map";
   } else {
     mapDiv.style.display = "none";
@@ -69,9 +67,11 @@ function toggleMap() {
   }
 }
 
-document.getElementById("mapButton").addEventListener("click", function() {
-  var link = document.createElement('a');
-  link.href = 'layers/Catchment.geojson';
-  link.download = 'Catchment.geojson';
-  link.click();
-});
+function toggleLegend() {
+  var legend = document.querySelector('.legend');
+  if (legend.style.display === 'none') {
+    legend.style.display = 'block';
+  } else {
+    legend.style.display = 'none';
+  }
+}
