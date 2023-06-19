@@ -64,23 +64,25 @@
     <h4>Operational Layers</h4>
     <div id="menu"></div>
     
-    <div class="legend">
-        <h4>Custom Map Legend</h4>
-        <div class="legend-square ">
-            <div><span style="background-color: #eee3b9"></span>Agriculture</div>
-            <div><span style="background-color: #f1c9bf"></span>Built Up Areas</div>
-            <div><span style="background-color: #b1c69e"></span>Oak Ridge Morain</div>
-            <div><span style="background-color: #b1cec7"></span>Niagra Escarpment</div>
-        </div>
+    <button class="legend-button" onclick="toggleLegend()">Toggle Legend</button>
 
-        <div class="legend-line">
-          <div><span style="background-color: #c4a836"></span>Catchment (Watershed Boundary)</div>
-          <div><span style="background-color: #01f7f7"></span>1st order stream</div>
-          <div><span style="background-color: #2bbfae"></span>2nd order stream</div>
-          <div><span style="background-color: #8626ed"></span>3rd order stream</div>
-          <div><span style="background-color: #2e2eff"></span>4th order stream</div>
-          <div><span style="background-color: #035886"></span>5th order & above</div>
-        </div> 
+    <div class="legend" style="display: none;">
+      <h4>Custom Map Legend</h4>
+      <div class="legend-square">
+        <div><span style="background-color: #eee3b9"></span>Agriculture</div>
+        <div><span style="background-color: #f1c9bf"></span>Built Up Areas</div>
+        <div><span style="background-color: #b1c69e"></span>Oak Ridge Morain</div>
+        <div><span style="background-color: #b1cec7"></span>Niagara Escarpment</div>
+      </div>
+    
+      <div class="legend-line">
+        <div><span style="border: 1px solid #c4a836"></span>Catchment (Watershed Boundary)</div>
+        <div><span style="background-color: #01f7f7"></span>1st order stream</div>
+        <div><span style="background-color: #2bbfae"></span>2nd order stream</div>
+        <div><span style="background-color: #8626ed"></span>3rd order stream</div>
+        <div><span style="background-color: #2e2eff"></span>4th order stream</div>
+        <div><span style="background-color: #035886"></span>5th order & above</div>
+      </div>
     </div>
 </div>
 </div>
