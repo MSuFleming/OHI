@@ -1,2 +1,2 @@
 # OHI
-School Project:https://msufleming.github.io/OHI/Solution.html
+Project Link: https://msufleming.github.io/OHI/Solution.html
